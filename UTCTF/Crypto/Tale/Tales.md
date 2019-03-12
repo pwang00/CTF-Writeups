@@ -1,5 +1,6 @@
 # Tale of Two Cities - 800
 
+*Disclaimer: wrote this writeup on 2.5 hours of sleep so may or may not be coherent*
 ## Problem description
 
 Looks like this book got a little messed up... there are some weird characters in there.  
@@ -44,10 +45,35 @@ print(differences)
 //[62, 59, 12, 31, 0, 15, 86, 4, 19, 0, 52, 0, 4, 59, 9, 52, 55, 59, 62, 7, 78, 95]
 ```
 
-Unfortunately, the list does not yield a readable flag when its entries are converted to ASCII, which means it is encoded using some other means.
+Unfortunately, the _differences_ list does not yield a readable flag when its entries are converted to ASCII, which means it is probably encoded using some other means.
 
 This is where the hint comes in handy.  A quick Google search of "A000788" yields a result from the Online Encyclopedia of Integer Sequences (OEIS), which coincidentally happens to be the exact characters that are capitalized in the hint.  We learn that A000788 is the sequence representing the total number of 1's in binary expansions of 0, ..., n, so we write a function to calculate the nth value of said sequence.
 
-```a000788 = lambda x: sum((bin(i+1).count("1") for i in range(x)))```
+```A000788 = lambda x: sum((bin(i+1).count("1") for i in range(x)))```
 
-Since the hint involves sequences, which involve indexing, we then infer that the flag characters are indexed in some manner, most likely alphabetical order: (a = 0, b = 1, c = 2, ..., z = 25).  Additionally, we already know that the flag format is fixed as "utflag", which translates to ```[20, 19, 5, 11, 0, 6, 26]``` alphabetically indexed.  So in essence we can construct a known-plaintext attack between the 
+Since the hint involves sequences, which involve indexing, we deduce that the flag characters are also indexed in some manner, most likely alphabetical order: (a = 0, b = 1, c = 2, ..., z = 25).  Additionally, we already know that the flag format is fixed as "utflag", which translates to ```[20, 19, 5, 11, 0, 6, 26]``` alphabetically indexed (call this list _known_).  From here, we need to figure out how the entries of _known_ are related to those ones--perhaps the a000788 sequence comes into play here.
+
+Interestingly, we find that for all six element in _known_, the following relationship holds: ```known[i] + A000788(known[i]) == differences[i]```.  Proceeding inductively, we can then generalize this relationship to solve for the rest of the flag by brute forcing the value of an integer _unknown\_num_ such that ```unknown_num + A000788(unknown_num) == differences[i]```.  The full code to do this is as follows:
+
+```
+import string
+flag = ""
+differences = [62, 59, 12, 31, 0, 15, 86, 4, 19, 0, 52, 0, 4, 59, 9, 52, 55, 59, 62, 7, 78, 95]
+A000788 = lambda x: sum((bin(i+1).count("1") for i in range(x)))
+for i in differences:
+    for unknown_num in range(100): # low threshold because values in differences list are small
+        if unknown_num + A000788(unknown_num) == i:
+            flag += string.ascii_letters[unknown_num]
+            
+print(flag)
+
+```
+
+The result turns out to be ```utflagAcharacterstudyC```, which has some incorrect characters, but it is pretty obvious that those characters should be the open and closed braces.
+
+Making the small fixes yields the correct flag: ```utflag{characterstudy}```.
+
+
+## Flag
+
+utflag{characterstudy}
