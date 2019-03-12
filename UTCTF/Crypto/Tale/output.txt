@@ -1,0 +1,93 @@
+197c197
+< up long rows of miscellaneous criminals; now, hanging a housebreaker on
+---
+> up long rows of miscellaneous criminals; n㐾 hanging a housebreaker on
+311c311
+< “I say a horse at a canter coming up, Joe.”
+---
+> “I say a horse at a canter coming up, Joe.�㐻
+482c482
+< turn the leaves of this dear book that I loved, and vainly hope in time
+---
+> turn the leaves of this dear book that I loved, and vainly hope in ti㐌
+645,646c645
+< last night when the horses were unyoked; beyond, a quiet coppice-wood,
+< in which many leaves of burning red and golden yellow still remained
+---
+> last night when the horses were unyoked; beyond, a quiet coppice-wood,㐟n which many leaves of burning red and golden yellow still remained
+813c812
+< It was a large, dark room, furnished in a funereal manner with black
+---
+> It was a large, dark room, furnished in a funereal manner㐀th black
+932c931
+< Our relations were business relations, but confidential. I was at that
+---
+> Our relations were business relations, but confidential. I w㐏at that
+1015c1014
+< “A daughter. A-a-matter of business--don't be distressed. Miss, if the
+---
+> “A daughter. A-㑖atter of business--don't be distressed. Miss, if the
+1086c1085
+< and memoranda, are all comprehended in the one line, 'Recalled to Life;'
+---
+> and memoranda, are all comprehended in the one line, 'Recalled to㐄fe;'
+1200,1201c1199
+< stained many hands, too, and many faces, and many naked feet, and many
+< wooden shoes. The hands of the man who sawed the wood, left red marks
+---
+> stained many hands, too, and many faces, and many naked feet, and many㐓oden shoes. The hands of the man who sawed the wood, left red marks
+1257c1255
+< broke off abruptly at the doors. The kennel, to make amends, ran down
+---
+> broke off abruptly at the doors. The kennel,㐀 make amends, ran down
+1279,1281c1277
+< another.”
+< 
+< There, his eyes happening to catch the tall joker writing up his joke,
+---
+> another.”㐴There, his eyes happening to catch the tall joker writing up his joke,
+1467c1463
+< uncorrupted, seemed to escape, and all spoilt and sickly vapours seemed
+---
+> uncorrupted, seemed to㐀cape, and all spoilt and sickly vapours seemed
+1572c1568
+< Rendered in a manner desperate, by her state and by the beckoning of
+---
+> Rendered in a manner 㐄perate, by her state and by the beckoning of
+1661c1657
+< from direct light and air, faded down to such a dull uniformity of
+---
+> from direct light and air,㐻ded down to such a dull uniformity of
+1858c1854
+< out--she had a fear of my going, though I had none--and when I was
+---
+> out--she had a fear of my㐉ing, though I had none--and when I was
+2041c2037
+< Under the over-swinging lamps--swinging ever brighter in the better
+---
+> Under the over-swinging lamps--swinging ever brighter in the bet㐴
+2203c2199
+< After hailing the morn with this second salutation, he threw a boot at
+---
+> After hailing the morn with this seco㐷salutation, he threw a boot at
+2353c2349
+< door-keeper this note for Mr. Lorry. He will then let you in.”
+---
+> door-keeper this n㐻 for Mr. Lorry. He will then let you in.”
+2471,2472c2467
+< in his pockets, whose whole attention, when Mr. Cruncher looked at him
+< then or afterwards, seemed to be concentrated on the ceiling of the
+---
+> in his pockets, whose whole attention, when Mr. Cruncher looked at him㐾en or afterwards, seemed to be concentrated on the ceiling of the
+2640c2635
+< whereat the jury's countenances displayed a guilty consciousness that
+---
+> whereat the jury's countenances displayed a guilty conscious㐇s that
+2780c2775
+< myself--timorous of highwaymen, and the prisoner has not a timorous
+---
+> myself--timorous of highwaymen,㑎d the prisoner has not a timorous
+2979c2974
+< “Have you no remembrance of the occasion?”
+---
+> “Have you no remem㑟Offset: 0x3400asion?”
