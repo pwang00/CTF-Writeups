@@ -35,7 +35,7 @@ Thankfully, the copy that the challenge writer used for "A Tale of Two Cities" w
 > “Have you no remem㑟Offset: 0x3400asion?”
 ```
 
-A few things stand out here.  As aforementioned, we find many non-ASCII Chinese characters.  However, towards the end of the diff output, we see the following text: ```Offset: 0x3400```  Given the structure of the challenge, we then deduce that the non-ASCII characters could be in the 0x3400 ordinal range, so when subtracted from the given offset, would yield differences between 0 and 255 (i.e. in the ASCII character range).  We then proceed to collect all the non-ASCII Chinese characters from the diff output in the order they appear, and end up with ```㐾㐻㐌㐟㐀㐏㑖㐄㐓㐀㐴㐀㐄㐻㐉㐴㐷㐻㐾㐇㑎㑟```.  Subtracting 0x3400 from the ordinal values of the characters in the following manner, we end up with an list of differences:
+A few things stand out here.   As aforementioned, we find many non-ASCII Chinese characters.  However, towards the end of the diff output, we see the following text: ```Offset: 0x3400```.  Given the nature of the challenge, we then deduce that the non-ASCII characters could be in the 0x3400 ordinal range, so when subtracted from the given offset, would yield differences between 0 and 255 (i.e. in the ASCII character range).  We then proceed to collect all the non-ASCII Chinese characters from the diff output in the order they appear, and end up with ```㐾㐻㐌㐟㐀㐏㑖㐄㐓㐀㐴㐀㐄㐻㐉㐴㐷㐻㐾㐇㑎㑟```.  Subtracting 0x3400 from the ordinal values of the characters in the following manner, we end up with an list of differences:
 
 ```
 chars = ["㐾", "㐻", "㐌", "㐟", "㐀", "㐏", "㑖", "㐄", "㐓", "㐀", "㐴", "㐀", "㐄", "㐻", "㐉", "㐴", "㐻", "㐾", "㐇", "㑎", "㑟"]
