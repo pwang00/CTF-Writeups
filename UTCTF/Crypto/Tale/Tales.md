@@ -51,7 +51,7 @@ This is where the hint comes in handy.  A quick Google search of "A000788" yield
 
 ```A000788 = lambda x: sum((bin(i+1).count("1") for i in range(x)))```
 
-Since the hint involves sequences, which involve indexing, we deduce that the flag characters are also indexed in some manner, most likely alphabetical order: (a = 0, b = 1, c = 2, ..., z = 25).  Additionally, we already know that the flag format is fixed as "utflag", which translates to ```[20, 19, 5, 11, 0, 6, 26]``` alphabetically indexed (call this list _known_).  From here, we need to figure out how the entries of _known_ are related to those ones--perhaps the a000788 sequence comes into play here.
+Since the hint involves sequences, which involve indexing, we deduce that the flag characters are also indexed in some manner, most likely alphabetical order: (a = 0, b = 1, c = 2, ..., z = 25).  Additionally, we already know that the flag format is fixed as "utflag", which translates to ```[20, 19, 5, 11, 0, 6, 26]``` alphabetically indexed (call this list _known_).  From here, we need to figure out how the entries of _known_ are related to the ones of _differences_--perhaps the A000788 sequence comes into play here.
 
 Interestingly, we find that for all six element in _known_, the following relationship holds: ```known[i] + A000788(known[i]) == differences[i]```.  Proceeding inductively, we can then generalize this relationship to solve for the rest of the flag by brute forcing the value of an integer _unknown\_num_ such that ```unknown_num + A000788(unknown_num) == differences[i]```.  The full code to do this is as follows:
 
