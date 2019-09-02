@@ -1,3 +1,3 @@
 # CTF-Writeups
 
-This repository contains a list of problems (most of which are probably cryptography) that I solved. 
+This repository contains a list of problems (most of which are probably cryptography) that I solved or helped solve.
