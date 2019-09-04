@@ -45,7 +45,7 @@ irb(main):001:0> Marshal.load(File.binread("pub.key"))
 
 Interesting--normally, an RSA public key would contain only (N, e).  The `cf` parameter certainly doesn't seem to match any known implementation of RSA, so we infer that it's an extra parameter.
 
-Going back to the code, we find that `cf = p.pow(q ** (k - 1) * (q - 1) - 1, q ** k)`.  Simplifying yields `cf = p^(φ(q^2) - 1) mod q^2`, and through Euler's theorem, `cf = p^-1 mod q^2`.  In its current form, `cf` isn't super useful since we only have information of `p^-1 mod q^2`, but we can use this to our advantage by multiplying both sides of the equation to arrive at `cf * p = 1 mod q^2`, which translates to `cf * p - 1 = kq^2`, and multiply this again by `p` to arrive at an `(cf * p - 1) * p = kN` (i.e. 0 mod N).  Luckily, we can use a Lattice Basis Reduction technique developed by Don Coppersmith in his paper "Finding Small Solutions to Small Degree Polynomials" to calculate `p`.
+Going back to the code, we find that `cf = p.pow(q ** (k - 1) * (q - 1) - 1, q ** k)`.  Simplifying yields `cf = p^(φ(q^2) - 1) mod q^2`, and through Euler's theorem, `cf = p^-1 mod q^2`.  In its current form, `cf` isn't super useful since we only have information of `p^-1 mod q^2`, but we can use this to our advantage by multiplying both sides of the equation by `p` to arrive at `cf * p = 1 mod q^2`, which translates to `cf * p - 1 = kq^2`, and multiply this again by `p` to arrive at an `(cf * p - 1) * p = kN` (i.e. 0 mod N).  Luckily, we can use a Lattice Basis Reduction technique developed by Don Coppersmith in his paper "Finding Small Solutions to Small Degree Polynomials" to calculate `p`.
 
 The code to do this is as follows:
 
@@ -64,5 +64,6 @@ print(roots)
 ```
 
 We see 2 results: 0 is a trivial root, so we can discard it, but we find out that the second value `166878663790065040663149504970052368124427462024107500159158464138407657299730521908976684364578086644682045134207945137293534705688910696520830729908263578233018529387676221035298300775812585471932551347478303730822844748034186479` divides N!  
+
 Thus, we have found `p`, and finding `q` is simply a matter of taking the square root of N / p.
 
