@@ -6,8 +6,9 @@ Eric has an elliptic curve defined over a Galois field with order 404993569381. 
 
 ## Solution
 
-Our goal is to find the discrete logarithm of 2 points P and G on an elliptic curve E, where G is the generator and P is some other point on the curve (in other words, find an integer `n` such that `P = nG`.  But before we can do this, we must first figure out the missing parameter `a` of E.  Thankfully, solving for it is not too hard:  Simply put the curve in Weierstrass form, rearrange the equation, and plug in one of the points.  
+Our goal is to find the discrete logarithm of 2 points P and G on an elliptic curve E, where G is the generator and P is some other point on the curve (in other words, find an integer `n` such that `P = nG`).  But before we can do this, we must first figure out the missing parameter `a` of E.  Thankfully, solving for it is not too hard:  Simply put the curve in Weierstrass form, rearrange the equation, and plug in one of the points.  
 
+![Sice me the deeeets](sice.png)
 
 The code to do this in SageMath is as follows:
 
