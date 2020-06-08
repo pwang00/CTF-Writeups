@@ -6,7 +6,7 @@ Anshul has a message that he wants to send to Disha using RSA. He padded the mes
 
 ## Solution
 
-We can use the famous coppersmith's short-pad and franklin-reiter related message attacks (too see how they work, head over to [the corresponding wikipedia article](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)) to decrypt both messages.  In particular, we first recover the fixed difference (denoted as `r`) between m1 and m2 via coppersmith's method by guessing a bound for r, and then solve for the messages which are the roots of the polynomials `x^e - C1` and `(x + r)^e - C2` via Franklin-Reiter.  This can be done as shown:
+We can use the famous Coppersmith's short-pad and Franklin-Reiter related message attacks (too see how they work, head over to [the corresponding wikipedia article](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)) to decrypt both messages.  In particular, we first recover the fixed difference (denoted as `r`) between m1 and m2 via coppersmith's method by guessing a bound for `r`, and then solve for the messages which are the roots of the polynomials `x^e - C1` and `(x + r)^e - C2` via Franklin-Reiter.  This can be done as shown:
 
 ```python
 from sage.all import *
