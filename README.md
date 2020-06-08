@@ -7,3 +7,6 @@ This repository contains a list of problems (most of which are probably cryptogr
 #### 2019 
 * UTCTF
 * Tokyo Westerns
+
+#### 2020
+* HSCTF
