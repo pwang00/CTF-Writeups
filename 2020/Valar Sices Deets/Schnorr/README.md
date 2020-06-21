@@ -94,7 +94,8 @@ which through subtracting and rearranging terms can be simplified to
 
 ![simplified](images/simplified.png)
 
-
+We can do this in sage using our obtained values as follows:
+ 
 ```python
 def lcg_recover():
     x1 = 30096958377823307344276367017724943142170975078802650818143933627150359255661
