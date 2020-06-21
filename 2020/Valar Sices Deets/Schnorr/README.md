@@ -84,7 +84,7 @@ def hash_to_point(msg):
 
 ## Solution
 
-It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce ![k](images/k.png) is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive ![k1k2](images/k1k2.png), ![k2k1b](images/k2k1b.png), where ![ab](images/ab.png) are the LCG constants.  
+It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce ![k](images/k.png) is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive ![k1k2](images/k1k2.png), ![k2k1b](images/k2k1b.png), where <img src = "images/ab.png" style="width: 10%; height: 10%">  are the LCG constants.  
 
 We only need to recover <img src = "images/a.png" width="8" height="7"> since the affine constant ![a](images/b.png) cancels out during derivation, and this is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call ![x1x2x3](images/x1x2x3.png)).  We know ![x1x2x3](images/x1x2x3.png) are related by 
 
@@ -112,7 +112,7 @@ def lcg_recover():
 Now that we know the LCG constants, we can perform a similar procedure to recover the private key ![x](images/x.png).  Note that every time we ask to sign a signature, we don't actually know the value of each ![k](images/k.png) that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of ![k](images/k.png) is related by a factor of <img src = "images/a.png" width="8" height="7">!  Thus, we can obtain 3 signatures ![signatures](images/signatures.png) of any arbitrary message, set up a system of congruences in 2 unknowns, ![k](images/k.png) and ![x](images/x.png) and recover ![x](images/x.png) via the following derivation:
 
 
-![derivation](images/derivation.png) 
+<img src = "images/derivation.png" style="width: 20%; height: 20%">
 
 In sage, this would be done as follows: 
 
