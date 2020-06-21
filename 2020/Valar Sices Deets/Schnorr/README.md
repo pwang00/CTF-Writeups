@@ -29,7 +29,7 @@ Enter 3 to ransom the private key / get the flag
 Enter 4 to leave
 ```
 
-Looking at the title and source of the challenge, it's pretty clear that the service computes [Schnorr signatures](https://en.wikipedia.org/wiki/Schnorr_signature) over a [Schnorr group](https://en.wikipedia.org/wiki/Schnorr_group) of size q in ![images/Zp.png], where 
+Looking at the title and source of the challenge, it's pretty clear that the service computes [Schnorr signatures](https://en.wikipedia.org/wiki/Schnorr_signature) over a [Schnorr group](https://en.wikipedia.org/wiki/Schnorr_group) of size q in ![Zp](images/Zp.png), where 
 
 ```
 p = 3993871109100710272437691314646400643073111311693036481699992099364633466256637285129260815713803244691197216342861697187251649910813115132361515737324190240716601363340052558443468445880815452031425921034324688491698193597125480632116762919611104921895868521512368771353897581628769520979183873995935265910772669831373896690914132355859035199596499613081641628797258103432237556847690662359555677646672337099147574234730799553818523181048408925758712117594385391406438035949726115047951826886306374043728232986732048029617542221232649658911575938549576337660496441822701229466999918919773943818371897583
@@ -60,7 +60,7 @@ def print_rand_nums():
     lcg_randomize()
 ```  
 
-For the second, the service computes the Schnorr signature ![k - xe](images/kxe.png) of a message where ![k](images/k.png) is a random value ![k](images/k.png) between 0 and q, ![images/x.png] is the private key, and ![e](images/e.png) is the hash ![hash](images/gkm.png).  This is again shown below:
+For the second, the service computes the Schnorr signature ![k - xe](images/kxe.png) of a message where ![k](images/k.png) is a random value ![k](images/k.png) between 0 and q, ![x](images/x.png) is the private key, and ![e](images/e.png) is the hash ![hash](images/gkm.png).  This is again shown below:
 
 ```python
 def shnorr_sign(privkey, msg):
@@ -84,5 +84,28 @@ def hash_to_point(msg):
 
 ## Solution
 
-The vulnerability here is twofold: 
+It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce is derived from ![k](images/k.png) is biased.  In this case an untruncated LCG is being used, so we know for any consecutive ![k1k2](images/k1k2.png), ![k2k1b](images/k2k1b.png), where ![ab](images/ab.png) are the LCG constants.  
+
+Recovering ![ab](images/ab.png) is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call ![x1x2x3](images/x1x2x3.png)).  We know ![x1x2x3](images/x1x2x3.png) are related by 
+
+![syseq](images/syseq.png)
+
+which we can simplify to 
+
+![simplified](images/simplified.png)
+
+
+```python
+def lcg_recover():
+	x1 = 30096958377823307344276367017724943142170975078802650818143933627150359255661
+	x2 = 56531144904142883065234161377668110910856172044580012975940857599903617985286
+	x3 = 21507298446547656840016447680790423102532194062582695389690425422459852733173
+	q = 66872845102634800095194804323292128799390830238101159557106523891532898612969
+	
+	a = (x2 - x3) * inverse_mod(x1 - x2, q) % q
+	# b = -(a * x1 - x2) % q
+
+	return a, q
+```
+
 
