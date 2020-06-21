@@ -86,7 +86,7 @@ def hash_to_point(msg):
 
 It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce ![k](images/k.png) is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive ![k1k2](images/k1k2.png), ![k2k1b](images/k2k1b.png), where ![ab](images/ab.png) are the LCG constants.  
 
-Recovering ![ab](images/ab.png) is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call ![x1x2x3](images/x1x2x3.png)).  We know ![x1x2x3](images/x1x2x3.png) are related by 
+We only need to recover ![a](images/a.png) since the affine constant ![a](images/b.png) cancels out during derivation, and this is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call ![x1x2x3](images/x1x2x3.png)).  We know ![x1x2x3](images/x1x2x3.png) are related by 
 
 ![syseq](images/syseq.png)
 
