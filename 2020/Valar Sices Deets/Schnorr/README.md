@@ -29,7 +29,7 @@ Enter 3 to ransom the private key / get the flag
 Enter 4 to leave
 ```
 
-Looking at the title and source of the challenge, it's pretty clear that the service computes [Schnorr signatures](https://en.wikipedia.org/wiki/Schnorr_signature) over a [Schnorr group](https://en.wikipedia.org/wiki/Schnorr_group) of size q in ![Zp](images/Zp.png), where 
+Looking at the title and source of the challenge, it's pretty clear that the service computes [Schnorr signatures](https://en.wikipedia.org/wiki/Schnorr_signature) over a [Schnorr group](https://en.wikipedia.org/wiki/Schnorr_group) of size q in <img src = "images/Zp.png" width="56" height="16">, where 
 
 ```
 p = 3993871109100710272437691314646400643073111311693036481699992099364633466256637285129260815713803244691197216342861697187251649910813115132361515737324190240716601363340052558443468445880815452031425921034324688491698193597125480632116762919611104921895868521512368771353897581628769520979183873995935265910772669831373896690914132355859035199596499613081641628797258103432237556847690662359555677646672337099147574234730799553818523181048408925758712117594385391406438035949726115047951826886306374043728232986732048029617542221232649658911575938549576337660496441822701229466999918919773943818371897583
@@ -60,7 +60,7 @@ def print_rand_nums():
     lcg_randomize()
 ```  
 
-For the second, the service computes the Schnorr signature ![k - xe](images/kxe.png) of a message where ![k](images/k.png) is a random value ![k](images/k.png) between 0 and q, ![x](images/x.png) is the private key, and ![e](images/e.png) is the hash of the concatenation of the (bit)string representations of ![gk](images/gk.png) and the message.  This is again shown below:
+For the second, the service computes the Schnorr signature <img src = "images/kxe.png" width="44" height="11"/> of a message where <img src = "images/k.png" width="8" height="11"/> is a random value between 0 and q, <img src = "images/x.png" width="8" height="7"/> is the private key, and <img src = "images/e.png" width="91" height="16"/> is the hash of the concatenation of the (bit)string representations of <img src = "images/gk.png" width="14" height="17"/> and the message.  This is again shown below:
 
 ```python
 def shnorr_sign(privkey, msg):
@@ -84,15 +84,15 @@ def hash_to_point(msg):
 
 ## Solution
 
-It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce ![k](images/k.png) is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive ![k1k2](images/k1k2.png), ![k2k1b](images/k2k1b.png), where <img src = "images/ab.png" style="width: 10%; height: 10%">  are the LCG constants.  
+It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce <img src = "images/k.png" width="8" height="11"/>is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive <img src = "images/k1k2.png" width="35" height="14"/>, <img src = "images/k2k1b.png" width="155" height="16"/>, where <img src = "images/ab.png" style="width: 10%; height: 10%">  are the LCG constants.  
 
-We only need to recover <img src = "images/a.png" width="8" height="7"> since the affine constant ![a](images/b.png) cancels out during derivation, and this is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call ![x1x2x3](images/x1x2x3.png)).  We know ![x1x2x3](images/x1x2x3.png) are related by 
+We only need to recover <img src = "images/a.png" width="8" height="7"> since the affine constant <img src = "images/b.png" width="6" height="11"/> cancels out during derivation, and this is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call <img src = "images/x1x2x3.png" width="58" height="10"/>).  We know <img src = "images/x1x2x3.png" width="58" height="10"/> are related by 
 
-![syseq](images/syseq.png)
+<img src = "images/syseq.png" width="155" height="39"/>
 
 which through subtracting and rearranging terms can be simplified to 
 
-![simplified](images/simplified.png)
+<img src = "images/simplified.png" width="237" height="18"/>
 
 We can do this in sage using our obtained values as follows:
 
@@ -109,10 +109,10 @@ def lcg_recover():
     return a, q
 ```
 
-Now that we know the LCG constants, we can perform a similar procedure to recover the private key ![x](images/x.png).  Note that every time we ask to sign a signature, we don't actually know the value of each ![k](images/k.png) that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of ![k](images/k.png) is related by a factor of <img src = "images/a.png" width="8" height="7"/>!  Thus, we can obtain 3 signatures ![signatures](images/signatures.png) of any arbitrary message, set up a system of congruences in 2 unknowns, ![k](images/k.png) and ![x](images/x.png) and recover ![x](images/x.png) via the following derivation:
+Now that we know the LCG constants, we can perform a similar procedure to recover the private key <img src = "images/x.png" width="8" height="7"/>.  Note that every time we ask to sign a signature, we don't actually know the value of each <img src = "images/k.png" width="8" height="11"/> that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of <img src = "images/k.png" width="8" height="11"/> is related by a factor of <img src = "images/a.png" width="8" height="7"/>!  Thus, we can obtain 3 signatures <img src = "images/signatures.png" width="54" height="10"/> of any arbitrary message, set up a system of congruences in 2 unknowns, <img src = "images/k.png" width="8" height="11"/> and <img src = "images/x.png" width="8" height="7"/> and recover <img src = "images/x.png" width="8" height="7"/> via the following derivation:
 
 
-<img src = "images/derivation.png" style="width: 55vw;"/>
+<img src = "images/derivation.png" width="567" height="202"/>
 
 In sage, this would be done as follows: 
 
