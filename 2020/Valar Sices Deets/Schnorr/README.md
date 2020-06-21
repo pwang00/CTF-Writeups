@@ -108,7 +108,7 @@ def lcg_recover():
     return a, q
 ```
 
-Now that we know the LCG constants, we can perform a similar procedure to recover the private key ![x](images/x.png).  Note that every time we ask to sign a signature, we don't actually know the value of each ![k](images/k.png) that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of ![k](images/k.png) is related by a factor of ![a](images/a.png)!  Thus, we can obtain 3 signatures ![signatures](images/sigatures.png)of any arbitrary message, set up a system of congruences in 2 unknowns, ![k](images/k.png) and ![x](images/x.png) and recover ![x](images/x.png) via the following derivation:
+Now that we know the LCG constants, we can perform a similar procedure to recover the private key ![x](images/x.png).  Note that every time we ask to sign a signature, we don't actually know the value of each ![k](images/k.png) that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of ![k](images/k.png) is related by a factor of ![a](images/a.png)!  Thus, we can obtain 3 signatures ![signatures](images/signatures.png)of any arbitrary message, set up a system of congruences in 2 unknowns, ![k](images/k.png) and ![x](images/x.png) and recover ![x](images/x.png) via the following derivation:
 
 
 ![derivation](images/derivation.png) 
