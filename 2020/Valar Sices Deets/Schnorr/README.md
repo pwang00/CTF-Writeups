@@ -60,7 +60,7 @@ def print_rand_nums():
     lcg_randomize()
 ```  
 
-For the second, the service computes the Schnorr signature ![k - xe](images/kxe.png) of a message where ![k](images/k.png) is a random value ![k](images/k.png) between 0 and q, ![x](images/x.png) is the private key, and ![e](images/e.png) is the hash ![hash](images/gkm.png).  This is again shown below:
+For the second, the service computes the Schnorr signature ![k - xe](images/kxe.png) of a message where ![k](images/k.png) is a random value ![k](images/k.png) between 0 and q, ![x](images/x.png) is the private key, and ![e](images/e.png) is the hash of the concatenation of the (bit)string representations of ![gk](images/gk.png) and the message.  This is again shown below:
 
 ```python
 def shnorr_sign(privkey, msg):
