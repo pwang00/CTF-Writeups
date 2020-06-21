@@ -112,7 +112,7 @@ def lcg_recover():
 Now that we know the LCG constants, we can perform a similar procedure to recover the private key <img src = "images/x.png" width="8" height="7"/>.  Note that every time we ask to sign a signature, we don't actually know the value of each <img src = "images/k.png" width="8" height="11"/> that is used, but we don't need to, since the fact that an LCG is being used means the that every consecutive value of <img src = "images/k.png" width="8" height="11"/> is related by a factor of <img src = "images/a.png" width="8" height="7"/>!  Thus, we can obtain 3 signatures <img src = "images/signatures.png" width="54" height="10"/> of any arbitrary message, set up a system of congruences in 2 unknowns, <img src = "images/k.png" width="8" height="11"/> and <img src = "images/x.png" width="8" height="7"/> and recover <img src = "images/x.png" width="8" height="7"/> via the following derivation:
 
 
-<img src = "images/derivation.png" width="567" height="202"/>
+<img src = "images/derivation.png" width="454" height="202"/>
 
 In sage, this would be done as follows: 
 
