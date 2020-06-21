@@ -84,7 +84,7 @@ def hash_to_point(msg):
 
 ## Solution
 
-It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce <img src = "images/k.png" width="8" height="11"/>is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive <img src = "images/k1k2.png" width="35" height="14"/>, <img src = "images/k2k1b.png" width="155" height="16"/>, where <img src = "images/ab.png" style="width: 10%; height: 10%">  are the LCG constants.  
+It turns out that Schnorr signatures may be totally compromised if the source of randomness the nonce <img src = "images/k.png" width="8" height="11"/>is derived from is biased.  In this case an untruncated LCG is being used, so we know for any consecutive <img src = "images/k1k2.png" width="35" height="14"/>, <img src = "images/k2k1b.png" width="155" height="16"/>, where <img src = "images/ab.png" width="22" height="14"/>  are the LCG constants.  
 
 We only need to recover <img src = "images/a.png" width="8" height="7"> since the affine constant <img src = "images/b.png" width="6" height="11"/> cancels out during derivation, and this is trivial:  we can simply use the first option in the service to generate 5 random numbers, of which we can choose any 3 consecutive outputs (which we will call <img src = "images/x1x2x3.png" width="58" height="10"/>).  We know <img src = "images/x1x2x3.png" width="58" height="10"/> are related by 
 
