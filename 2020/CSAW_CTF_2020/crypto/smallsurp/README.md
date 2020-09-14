@@ -113,7 +113,12 @@ We will successfully authenticate with the HMAC we provide, and if we print out 
       </table>
 ```
 
-Now since we're told that all of the admin passwords are somehow connected to the root admin's, we can reasonably infer that some secret sharing scheme was used--most likely Shamir.  Thus, we try Shamir secret recovery on the 20 admins' secrets, which yields the key `'_z3r0_kn0wl3dg3_'`.  We can then decrypt the root admin's cbc-encrypted password with the `C = 0x08589c6b40ab64c434064ec4be41c9089eefc599603bc7441898c2e8511d03f6` and `IV = 0x254dc5ae7bb063ceaf3c2da953386948` as given in `encrypted.txt`.  The full code to do this is shown below.
+Now since we're told that all of the admin passwords are somehow connected to the root admin's, we can reasonably infer that some secret sharing scheme was used--most likely Shamir.  Thus, we try Shamir secret recovery on the 20 admins' secrets, which yields the key `'_z3r0_kn0wl3dg3_'`.  We can then decrypt the root admin's cbc-encrypted password with 
+```
+C = 0x08589c6b40ab64c434064ec4be41c9089eefc599603bc7441898c2e8511d03f6
+IV = 0x254dc5ae7bb063ceaf3c2da953386948
+``` 
+as given in `encrypted.txt`.  The full code to do this is shown below.
 
 ```python
 
