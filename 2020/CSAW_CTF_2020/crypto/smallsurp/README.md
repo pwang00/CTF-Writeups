@@ -1,4 +1,4 @@
-# Smallsurp (300) - Solved 20 mins after contest end
+# Smallsurp (300) - Solved 25 mins after contest end
 
 ## Description
 
