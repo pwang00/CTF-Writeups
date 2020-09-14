@@ -54,7 +54,7 @@ def dashboard(user):
 
 ```
 
-We note that the main application pretty much performs a standard password authenticated key agreement using the Secure Remote Password Protocol (SRP).  You can read more about the protocol here: [sice](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).  In essence, we generate an ephemeral key A = g^a where g is a generator, and a, b are (supposed to be randomly chosen) values in Z/pZ for some safe prime p.  In context of this challenge though, we can just choose some random value of A and send it, along with a username, to the server as a POST request.  The server then sends us back a salt value and its ephemeral key B.  
+The application pretty much just performs a standard password authenticated key agreement using the Secure Remote Password Protocol (SRP).  You can read more about the protocol here: [sice](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).  In essence, we generate an ephemeral key A = g^a where g is a generator, and a, b are (supposed to be randomly chosen) values in Z/pZ for some safe prime p.  In context of this challenge though, we can just choose some random value of A and send it, along with a username, to the server as a POST request.  The server then sends us back a salt value and its ephemeral key B.  
 
 In a perfect world, the server should be checking to see that A is not a multiple of N (i.e. `A \equiv 0 (mod N)`), but in this scenario, it's only checking to see that A is not in the _set_ `{0, N}`.  That is very bad! (for the server, of course.)  We can just set A to be c * N for some integer c > 1, which causes `S = modular_pow(A * modular_pow(v, u, N), b, N)` to evaluate to 0.  
 
