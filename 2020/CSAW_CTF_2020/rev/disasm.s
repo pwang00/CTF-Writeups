@@ -1,0 +1,165 @@
+Function sub_402554 ; 1 xref
+
+0x402554:  push    rbp
+0x402555:  mov     rbp, rsp
+0x402558:  mov     dword [rbp-0x14], edi
+0x40255b:  mov     dword [rbp-0x4], 0x0
+0x402562:  jmp     0x402626
+0x402567:  mov     byte [rbp-0x5], 0x0
+0x40256b:  mov     byte [rbp-0x6], 0x0
+0x40256f:  mov     dword [rbp-0xc], 0x0
+0x402576:  jmp     0x4025c9
+0x402578:  mov     eax, dword [rbp-0x4]
+0x40257b:  lea     esi, [rax+0xf]
+0x40257e:  mov     edx, dword [rbp-0x14]
+0x402581:  mov     eax, edx
+0x402583:  add     eax, eax
+0x402585:  add     edx, eax
+0x402587:  mov     eax, dword [rbp-0xc]
+0x40258a:  add     eax, edx
+0x40258c:  mov     ecx, eax
+0x40258e:  mov     edx, esi
+0x402590:  mov     rax, rdx
+0x402593:  add     rax, rax
+0x402596:  add     rax, rdx
+0x402599:  shl     rax, 0x2
+0x40259d:  lea     rdx, [rax+rcx]
+0x4025a1:  lea     rax, [rel board]
+0x4025a8:  add     rax, rdx
+0x4025ab:  movzx   eax, byte [rax]
+0x4025ae:  test    al, al
+0x4025b0:  je      0x4025c5
+0x4025b2:  mov     eax, dword [rbp-0xc]
+0x4025b5:  add     eax, 0x1
+0x4025b8:  xor     byte [rbp-0x5], al
+0x4025bb:  movzx   eax, byte [rbp-0x6]
+0x4025bf:  add     eax, 0x1
+0x4025c2:  mov     byte [rbp-0x6], al
+0x4025c5:  add     dword [rbp-0xc], 0x1
+0x4025c9:  cmp     dword [rbp-0xc], 0x2
+0x4025cd:  jbe     0x402578
+0x4025cf:  mov     ecx, dword [rbp-0x4]
+0x4025d2:  mov     edx, dword [rbp-0x14]
+0x4025d5:  mov     rax, rdx
+0x4025d8:  shl     rax, 0x2
+0x4025dc:  add     rax, rdx
+0x4025df:  lea     rdx, [rax+rcx]
+0x4025e3:  lea     rax, [rel data_403700]
+0x4025ea:  add     rax, rdx
+0x4025ed:  movzx   eax, byte [rax]
+0x4025f0:  cmp     byte [rbp-0x5], al
+0x4025f3:  jne     0x40261b
+0x4025f5:  mov     ecx, dword [rbp-0x4]
+0x4025f8:  mov     edx, dword [rbp-0x14]
+0x4025fb:  mov     rax, rdx
+0x4025fe:  shl     rax, 0x2
+0x402602:  add     rax, rdx
+0x402605:  lea     rdx, [rax+rcx]
+0x402609:  lea     rax, [rel data_403730]
+0x402610:  add     rax, rdx
+0x402613:  movzx   eax, byte [rax]
+0x402616:  cmp     byte [rbp-0x6], al
+0x402619:  je      0x402622
+0x40261b:  mov     eax, 0x0
+0x402620:  jmp     0x402635
+0x402622:  add     dword [rbp-0x4], 0x1
+0x402626:  cmp     dword [rbp-0x4], 0x4
+0x40262a:  jbe     0x402567
+0x402630:  mov     eax, 0x1
+0x402635:  pop     rbp
+0x402636:  retn
+
+Function sub_402637 ; 1 xref
+0x402637:  push    rbp
+0x402638:  mov     rbp, rsp
+0x40263b:  mov     dword [rbp-0x14], edi
+0x40263e:  mov     dword [rbp-0x4], 0x0
+0x402645:  jmp     0x402707
+0x40264a:  mov     byte [rbp-0x5], 0x0
+0x40264e:  mov     byte [rbp-0x6], 0x0
+0x402652:  mov     dword [rbp-0xc], 0x0
+0x402659:  jmp     0x4026ac
+0x40265b:  mov     eax, dword [rbp-0xc]
+0x40265e:  lea     esi, [rax+0xf]
+0x402661:  mov     edx, dword [rbp-0x14]
+0x402664:  mov     eax, edx
+0x402666:  add     eax, eax
+0x402668:  add     edx, eax
+0x40266a:  mov     eax, dword [rbp-0x4]
+0x40266d:  add     eax, edx
+0x40266f:  mov     ecx, eax
+0x402671:  mov     edx, esi
+0x402673:  mov     rax, rdx
+0x402676:  add     rax, rax
+0x402679:  add     rax, rdx
+0x40267c:  shl     rax, 0x2
+0x402680:  lea     rdx, [rax+rcx]
+0x402684:  lea     rax, [rel board]
+0x40268b:  add     rax, rdx
+0x40268e:  movzx   eax, byte [rax]
+0x402691:  test    al, al
+0x402693:  je      0x4026a8
+0x402695:  mov     eax, dword [rbp-0xc]
+0x402698:  add     eax, 0x1
+0x40269b:  xor     byte [rbp-0x5], al
+0x40269e:  movzx   eax, byte [rbp-0x6]
+0x4026a2:  add     eax, 0x1
+0x4026a5:  mov     byte [rbp-0x6], al
+0x4026a8:  add     dword [rbp-0xc], 0x1
+0x4026ac:  cmp     dword [rbp-0xc], 0x4
+0x4026b0:  jbe     0x40265b
+0x4026b2:  mov     ecx, dword [rbp-0x4]
+0x4026b5:  mov     edx, dword [rbp-0x14]
+0x4026b8:  mov     rax, rdx
+0x4026bb:  add     rax, rax
+0x4026be:  add     rax, rdx
+0x4026c1:  lea     rdx, [rax+rcx]
+0x4026c5:  lea     rax, [rel data_403718]
+0x4026cc:  add     rax, rdx
+0x4026cf:  movzx   eax, byte [rax]
+0x4026d2:  cmp     byte [rbp-0x5], al
+0x4026d5:  jne     0x4026fc
+0x4026d7:  mov     ecx, dword [rbp-0x4]
+0x4026da:  mov     edx, dword [rbp-0x14]
+0x4026dd:  mov     rax, rdx
+0x4026e0:  add     rax, rax
+0x4026e3:  add     rax, rdx
+0x4026e6:  lea     rdx, [rax+rcx]
+0x4026ea:  lea     rax, [rel data_403748]
+0x4026f1:  add     rax, rdx
+0x4026f4:  movzx   eax, byte [rax]
+0x4026f7:  cmp     byte [rbp-0x6], al
+0x4026fa:  je      0x402703
+0x4026fc:  mov     eax, 0x0
+0x402701:  jmp     0x402716
+0x402703:  add     dword [rbp-0x4], 0x1
+0x402707:  cmp     dword [rbp-0x4], 0x2
+0x40270b:  jbe     0x40264a
+0x402711:  mov     eax, 0x1
+0x402716:  pop     rbp
+0x402717:  retn    
+
+Function check_cheat_codes ; 1 xref
+0x402718:  push    rbp
+0x402719:  mov     rbp, rsp
+0x40271c:  sub     rsp, 0x10
+0x402720:  mov     dword [rbp-0x4], 0x0
+0x402727:  jmp     0x402750
+0x402729:  mov     eax, dword [rbp-0x4]
+0x40272c:  mov     edi, eax
+0x40272e:  call    sub_402554
+0x402733:  test    eax, eax
+0x402735:  je      0x402745
+0x402737:  mov     eax, dword [rbp-0x4]
+0x40273a:  mov     edi, eax
+0x40273c:  call    sub_402637
+0x402741:  test    eax, eax
+0x402743:  jne     0x40274c
+0x402745:  mov     eax, 0x0
+0x40274a:  jmp     0x40275b
+0x40274c:  add     dword [rbp-0x4], 0x1
+0x402750:  cmp     dword [rbp-0x4], 0x3
+0x402754:  jbe     0x402729
+0x402756:  mov     eax, 0x1
+0x40275b:  leave   
+0x40275c:  retn    
