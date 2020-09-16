@@ -10,3 +10,4 @@ This repository contains a list of problems (most of which are probably cryptogr
 
 #### 2020
 * HSCTF
+* CSAW CTF Quals
